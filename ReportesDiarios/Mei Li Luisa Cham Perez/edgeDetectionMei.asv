@@ -61,14 +61,9 @@ subplot(1,1,1)
 angle=atan2(gy,gx); %angulo entre las gradientes
 imshow(angle,[]);
 title('Gradient Orientation')
-colormap('autumn')
+color
 % reconocer objetos basado en solo el contenido de orillas
-% es importante la magnitud y el angulo
 
 %%
-
-
 edgcany=edge(f,'Canny');
 imshow(edgcany,[]);
-title('Canny Edge')
-
