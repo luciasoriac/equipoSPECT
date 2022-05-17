@@ -1,2 +1,3 @@
-# medicalimaging2
+# equipoSPECT
+
 hw + avances de imagen 2
