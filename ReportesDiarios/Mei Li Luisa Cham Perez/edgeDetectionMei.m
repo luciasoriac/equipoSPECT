@@ -14,23 +14,32 @@ imshow(g1,[-10,10]);
 title('Derivada en x')
 % La derivada en x, de blanco a negro
 %%
+% Sobel Mask
 edgey=[-1 -2 -1;0,0,0;1,2,1]/8
 g2=conv2(f,edgey,'same');
 imshow(g2,[-10,10])
 figure(2)
 subplot(1,2,1)
 imshow(g1,[-10,10])
+title('Derivada en x')
 subplot(1,2,2)
 imshow(g2,[-10,10])
+title('Derivada en y')
 %%
 figure(3)
 subplot(1,1,1)
 %%
+%Soberl Mask dx
 edgex=[1,0,-1;2,0,-2;1,0,-1]/8
 gx=conv2(f,edgex,'same');
 gy=conv2(f,edgey,'same');
+%Gradiente Magnitud
 mag=abs(gx)+abs(gy);
 imshow(mag,[]);
+title('Gradient Magnitud = |dx| + |gy|')
+
+% recocimiento en base a las orillas
+
 %%
 noisemask = [-1, 0 1];
 noiseimage = conv2(f,noisemask,'same');
