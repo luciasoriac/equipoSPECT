@@ -3,16 +3,14 @@
 % Equipo SPECT: Mei Li Cham
 % Cargar la imagen radiograph1
 f=imread('radiograph1.jpg');
-f=imresize(f,1);
+f=imresize(f,0.25);
 f=double(f(:,:,1));
 imshow(f,[])
 %%
 % Deteccion de orillas utilizando una mascara
-edgex=[1,-1] % se crea la mascara de convolucion, el -1 1 implica sacar el escalon
+edgex=[1,-1] % se crea la mascara de convolucion, el -1 1 implica
 g1=conv2(f,edgex,'same');
 imshow(g1,[-10,10]);
-title('Derivada en x')
-% La derivada en x, de blanco a negro
 %%
 edgey=[-1 -2 -1;0,0,0;1,2,1]/8
 g2=conv2(f,edgey,'same');
