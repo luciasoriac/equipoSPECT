@@ -41,20 +41,34 @@ title('Gradient Magnitud = |dx| + |gy|')
 % recocimiento en base a las orillas
 
 %%
+
+% Estimar el nivel de ruido
 noisemask = [-1, 0 1];
 noiseimage = conv2(f,noisemask,'same');
-noisevariance = mean2(noiseimage.^2);
-noisestd = sqrt(noisevariance/2);
-edgedetection1 = mag > noisestd;
+noisevariance = mean2(noiseimage.^2); %estimacion de la varianza
+noisestd = sqrt(noisevariance/2); %estimacion de la desviacion estandar
+edgedetection1 = mag > noisestd; % si la magnitud es mayor del ruido, estimacion de orillas
 edgedetection2 = mag > 2*noisestd;
 subplot(1,2,1)
 imshow(edgedetection1,[]);
+title('Edge detection at sigma')
 subplot(1,2,2)
 imshow(edgedetection2,[]);
+title('Edge detection at 2 sigma')
+%%
 figure(4)
 subplot(1,1,1)
-angle=atan2(gy,gx);
+angle=atan2(gy,gx); %angulo entre las gradientes
 imshow(angle,[]);
+title('Gradient Orientation')
+colormap('autumn')
+% reconocer objetos basado en solo el contenido de orillas
+% es importante la magnitud y el angulo
+
 %%
+
+
 edgcany=edge(f,'Canny');
 imshow(edgcany,[]);
+title('Canny Edge')
+
