@@ -25,8 +25,8 @@ title('Range-Doppler Map');
 %% Estimate Doppler and range from range-Doppler response.
 
 % Create a range-Doppler response object.
-hrdresp = phased.RangeDopplerResponse(...
-   'RangeMethod','FFT',...
+hrdresp = phased.RangeDopplerResponse(...                                    % calculates the filtered response to fast-tiem and slow-time data
+   'RangeMethod','FFT',...                                                   % specifies the use of fft
    'PropagationSpeed',RangeDopplerEx_Dechirp_PropSpeed,...
    'SampleRate',RangeDopplerEx_Dechirp_Fs,...
    'DechirpInput',true,...
@@ -37,13 +37,16 @@ hrdresp = phased.RangeDopplerResponse(...
    RangeDopplerEx_Dechirp_X,RangeDopplerEx_Dechirp_Xref);
 
 % Estimate the range and Doppler by finding the location of the maximum response.
-[x_temp,idx_temp] = max(abs(resp));
-[~,dop_idx] = max(x_temp);
+[x_temp,idx_temp] = max(abs(resp));                                         % find the maximym of the doppler response (in absolute value)
+[~,dop_idx] = max(x_temp);                                                  % finds when the maximum occurs
 rng_idx = idx_temp(dop_idx);
-dop_est = dop_grid(dop_idx) % Doppler shift
+dop_est = dop_grid(dop_idx) % Doppler shift                                 % gives a shift of -712.8906
 
-rng_est = rng_grid(rng_idx) % Distance of target
+rng_est = rng_grid(rng_idx) % Distance of target                            % the distance of the target is approximately 2250 m
 
+
+%The target is approximately 2250 meters away and is moving fast enough to
+%cause a doppler shift of approximately -712.8906 Hz. 
 %%% FMCW Radar System
 
 %% Range Doppler Response of FMCW Signal
