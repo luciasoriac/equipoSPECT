@@ -3,7 +3,7 @@
 %%% Pulse radar systems
 
 %% Range Doppler response using matched filter
-%load RangeDopplerExampleData;
+load RangeDopplerExampleData;
 
 % Create a range-Doppler response object
 response = phased.RangeDopplerResponse('DopplerFFTLengthSource','Property', ...
