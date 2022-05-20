@@ -45,6 +45,7 @@ dop_est = dop_grid(dop_idx) % Doppler shift
 rng_est = rng_grid(rng_idx) % Distance of target
 
 %%% FMCW Radar System
+%x= print('the target is approximately' + str(rng_est) + 'meters away and is moving fast enough to cause a Doppler shift of approximately' + str(dop_est) + 'Hz')
 
 %% Range Doppler Response of FMCW Signal
 
@@ -64,6 +65,8 @@ plotResponse(hrdresp,...
 
 %%% Range-Speed response pattern of target
 
+%The target is approximately X meters away and is moving fast enough to
+%cause a Doppler shift of approximately X Hz
 %%
 % Initial settings
 antenna = phased.IsotropicAntennaElement(...
