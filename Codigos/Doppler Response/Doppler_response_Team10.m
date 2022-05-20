@@ -1,8 +1,11 @@
 %%% Range-Doppler response, two radar systems
 
 %%% Pulse radar systems
+%NOTE: In order for this code to run properly, the Phased Array System
+%Toolbox was installed to Matlab 
 
-%% Range Doppler response using matched filter
+
+%% 1. Range Doppler response using matched filter
 load RangeDopplerExampleData;
 
 % Create a range-Doppler response object
@@ -22,7 +25,7 @@ xlabel('Speed (m/s)');
 ylabel('Range (m)');
 title('Range-Doppler Map');
 
-%% Estimate Doppler and range from range-Doppler response.
+%% 2.Estimate Doppler and range from range-Doppler response.
 
 % Create a range-Doppler response object.
 hrdresp = phased.RangeDopplerResponse(...                                    % calculates the filtered response to fast-tiem and slow-time data
@@ -49,7 +52,7 @@ rng_est = rng_grid(rng_idx) % Distance of target                            % th
 %cause a doppler shift of approximately -712.8906 Hz. 
 %%% FMCW Radar System
 
-%% Range Doppler Response of FMCW Signal
+%% 3. Range Doppler Response of FMCW Signal
 
 % Create a range-Doppler response object.
 %phased range doppler response is a command that aids in the calculation of
@@ -73,7 +76,7 @@ plotResponse(hrdresp,...
 %%% Range-Speed response pattern of target
 
 %%
-% Initial settings
+% 4. Initial settings
 antenna = phased.IsotropicAntennaElement(...
     'FrequencyRange',[5e9 15e9]);
 transmitter = phased.Transmitter('Gain',20,'InUseOutputPort',true);
