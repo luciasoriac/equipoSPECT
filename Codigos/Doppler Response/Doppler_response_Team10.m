@@ -52,6 +52,11 @@ rng_est = rng_grid(rng_idx) % Distance of target                            % th
 %% Range Doppler Response of FMCW Signal
 
 % Create a range-Doppler response object.
+%phased range doppler response is a command that aids in the calculation of
+%the filtered response for fast and slow time data situations. this command
+%uses matched filter or fft 
+%in this situation a fft is used to compute the signal
+
 hrdresp = phased.RangeDopplerResponse(...
    'RangeMethod','FFT',...
    'PropagationSpeed',RangeDopplerEx_Dechirp_PropSpeed,...
