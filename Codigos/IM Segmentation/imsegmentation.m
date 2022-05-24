@@ -87,7 +87,7 @@ dxp=[0,1;-1,0];
 dyp=[1,0;0,-1];  % gradiente en y
 edgemap = abs(conv2(seg2,dxp,'same'))+abs(conv2(seg2,dyp,'same'));    %mapa de orillas centrado
 imshow(f2+edgemap,[0,1]);     % ver las orillas de la imagen, otra forma de visualizar las imagenes
-title('Hand X-ray Otsu threshold')
+title(' Proposed Hand X-ray Otsu threshold')
 
 
 %% Kmeans segmentation
