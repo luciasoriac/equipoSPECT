@@ -7,6 +7,8 @@
     %
 
 %%
+%cargar la imagen con la cual se trabajará 
+
 f=imread('radiograph1.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
@@ -15,6 +17,7 @@ figure(1)
 imshow(f,[]);
 %% Thresholding
 
+%stablish the limits that will be used 
 seg1 = f > 0.5;
 imshow(seg1,[])
 imshow(seg1.*f,[])
@@ -75,3 +78,4 @@ imshow(rgb)
 title('Watershed Transform')
 
 % provide an alterante segmentation based on a different edge detector
+%utilizar otro edge detector 
