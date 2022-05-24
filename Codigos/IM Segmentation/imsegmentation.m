@@ -1,7 +1,7 @@
 % Equiop SPECT
 % Integrantes
     % Mei Li Luisa Cham Perez
-    %
+    % Ana Lucía Soria Cardona 
     %
     %
     %
