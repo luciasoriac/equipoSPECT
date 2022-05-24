@@ -1,45 +1,33 @@
-%%
-% Ejemplo de Edge Detecion
-% Equipo SPECT: Mei Li Cham
-% Cargar la imagen radiograph1
 f=imread('radiograph1.jpg');
-f=imresize(f,1);
+f=imresize(f,0.25);
 f=double(f(:,:,1));
 imshow(f,[])
+title('Radiograph Og')
 %%
-% Deteccion de orillas utilizando una mascara
-edgex=[1,-1] % se crea la mascara de convolucion, el -1 1 implica sacar el escalon
+edgex=[1,-1]
 g1=conv2(f,edgex,'same');
 imshow(g1,[-10,10]);
-title('Derivada en x')
-% La derivada en x, de blanco a negro
+title('Radiograph edges')
 %%
-% Sobel Mask
 edgey=[-1 -2 -1;0,0,0;1,2,1]/8
 g2=conv2(f,edgey,'same');
-imshow(g2,[-10,10])
-figure(2)
+figure(3)
 subplot(1,2,1)
 imshow(g1,[-10,10])
-title('Derivada en x')
+title('Dx')
 subplot(1,2,2)
 imshow(g2,[-10,10])
-title('Derivada en y')
+title('Dy')
 %%
-figure(3)
+figure(4)
 subplot(1,1,1)
 %%
-%Soberl Mask dx
 edgex=[1,0,-1;2,0,-2;1,0,-1]/8
 gx=conv2(f,edgex,'same');
 gy=conv2(f,edgey,'same');
-%Gradiente Magnitud
 mag=abs(gx)+abs(gy);
+figure(5)
 imshow(mag,[]);
-title('Gradient Magnitud = |dx| + |gy|')
-
-% recocimiento en base a las orillas
-
 %%
 noisemask = [-1, 0 1];
 noiseimage = conv2(f,noisemask,'same');
@@ -47,14 +35,20 @@ noisevariance = mean2(noiseimage.^2);
 noisestd = sqrt(noisevariance/2);
 edgedetection1 = mag > noisestd;
 edgedetection2 = mag > 2*noisestd;
+figure(6)
 subplot(1,2,1)
 imshow(edgedetection1,[]);
+title('edge detection s1')
 subplot(1,2,2)
 imshow(edgedetection2,[]);
-figure(4)
+title('edge detection s2')
+figure(7)
 subplot(1,1,1)
 angle=atan2(gy,gx);
 imshow(angle,[]);
+title('gradient orentation')
 %%
 edgcany=edge(f,'Canny');
+figure(8)
 imshow(edgcany,[]);
+title('edge canny')
