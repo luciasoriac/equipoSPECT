@@ -1,20 +1,23 @@
-% Equipo SPECT
+% Equiop SPECT
 % Integrantes
     % Mei Li Luisa Cham Perez
-    % Ana Lucia Soria Cardona
+    % Ana Lucía Soria Cardona A00827565
     %
     %
     %
 
 %%
-f=imread('xray_hand.jpg');
+%cargar la imagen con la cual se trabajará 
+
+f=imread('radiograph1.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
-f=imresize(f,1);
+f=imresize(f,0.15);
 figure(1)
 imshow(f,[]);
 %% Thresholding
 
+%stablish the limits that will be used 
 seg1 = f > 0.5;
 figure
 imshow(seg1,[])
@@ -77,3 +80,4 @@ imshow(rgb)
 title('Watershed Transform')
 
 % provide an alterante segmentation based on a different edge detector
+%utilizar otro edge detector 
