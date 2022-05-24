@@ -1,16 +1,16 @@
-% Equiop SPECT
+% Equipo SPECT
 % Integrantes
     % Mei Li Luisa Cham Perez
-    %
+    % Ana Lucia Soria Cardona
     %
     %
     %
 
 %%
-f=imread('radiograph1.jpg');
+f=imread('xray_hand.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
-f=imresize(f,0.15);
+f=imresize(f,1);
 figure(1)
 imshow(f,[]);
 %% Thresholding
