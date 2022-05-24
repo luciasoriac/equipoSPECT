@@ -1,6 +1,6 @@
 % Equiop SPECT
 % Integrantes
-    % Mei Li Luisa Cham Perez
+    % Mei Li Luisa Cham Perez A01139386
     % Ana Lucía Soria Cardona A00827565
     %
     %
@@ -9,25 +9,44 @@
 %%
 %cargar la imagen con la cual se trabajará 
 
-f=imread('radiograph1.jpg');
+f=imread('xray_hand.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
-f=imresize(f,0.15);
+f=imresize(f,2);
 figure(1)
 imshow(f,[]);
+title('Original radiograph')
 %% Thresholding
 
 %stablish the limits that will be used 
 seg1 = f > 0.5;
-figure
+subplot(3,2,1)
 imshow(seg1,[])
-figure
+title('f > 0.5')
+subplot(3,2,2)
 imshow(seg1.*f,[])
-seg1 = f < 0.75;
-imshow(seg1,[])
-imshow(seg1.*f,[])
+title('result f> 0.5')
 
+seg1 = f < 0.75;
+subplot(3,2,3)
+imshow(seg1,[])
+title('f >0.75')
+subplot(3,2,4)
+imshow(seg1.*f,[])
+title('result f < 0.75')
+
+seg1 = f > 0.1;
+subplot(3,2,5)
+imshow(seg1,[])
+title('f >0.1')
+subplot(3,2,6)
+imshow(seg1.*f,[])
+title('result f >0.1')
+
+figure
 imhist(f)
+
+title('histogram')
 % Use a third threshold based on the histogram
 %% 
 %% Otsu method

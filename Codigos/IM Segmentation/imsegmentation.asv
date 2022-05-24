@@ -1,29 +1,45 @@
-% Equipo SPECT
+% Equiop SPECT
 % Integrantes
-    % Mei Li Luisa Cham Perez
-    % Ana Lucia Soria Cardona
+    % Mei Li Luisa Cham Perez A01139386
+    % Ana Lucía Soria Cardona A00827565
     %
     %
     %
 
 %%
+%cargar la imagen con la cual se trabajará 
+
 f=imread('xray_hand.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
-f=imresize(f,1);
+f=imresize(f,2);
 figure(1)
 imshow(f,[]);
+title('Original radiograph')
 %% Thresholding
 
+%stablish the limits that will be used 
 seg1 = f > 0.5;
-figure
+subplot(3,2,1)
 imshow(seg1,[])
-figure
-imshow(seg1.*f,[])
-seg1 = f < 0.75;
-imshow(seg1,[])
+title('f > 0.5')
+subplot(3,2,2)
 imshow(seg1.*f,[])
 
+seg1 = f < 0.75;
+subplot(3,2,3)
+imshow(seg1,[])
+title('f >0.75')
+subplot(3,2,4)
+imshow(seg1.*f,[])
+
+seg1 = f >0.9;
+subplot(3,2,5)
+imshow(seg1,[])
+title('f >0.75')
+subplot(3,2,4)
+imshow(seg1.*f,[])
+figure
 imhist(f)
 % Use a third threshold based on the histogram
 %% 
@@ -77,3 +93,4 @@ imshow(rgb)
 title('Watershed Transform')
 
 % provide an alterante segmentation based on a different edge detector
+%utilizar otro edge detector 
