@@ -1,6 +1,10 @@
 % Equiop SPECT
 % Integrantes
     % Mei Li Luisa Cham Perez
+    %
+    %
+    %
+    %
 
 %%
 f=imread('radiograph1.jpg');
