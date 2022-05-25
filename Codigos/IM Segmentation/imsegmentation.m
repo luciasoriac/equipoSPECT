@@ -3,6 +3,7 @@
     % Mei Li Luisa Cham Perez A01139386
     % Ana Lucía Soria Cardona A00827565
     %
+    % Natalia Verónica Flores Del Río
     %
     %
 
