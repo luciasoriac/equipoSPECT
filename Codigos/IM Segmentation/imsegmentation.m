@@ -106,7 +106,6 @@ imshow(f+edgemap,[0,1]);
 title ('5 centers')
 
 % Do the same procedure but now with 5 centers.
-% Is the segmentation better?
 % Is the segmentation better?   Sí
 %% Watershed segmentation
 
