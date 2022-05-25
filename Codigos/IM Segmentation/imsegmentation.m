@@ -118,6 +118,7 @@ L = watershed(D);
 
 edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));
 imshow(f+edgemap,[0,1]);
+title ('Edge Map')
 
 
 L(edgeC) = 0;
