@@ -133,3 +133,8 @@ title('Watershed Transform')
 
 % provide an alterante segmentation based on a different edge detector
 %utilizar otro edge detector 
+edgex=[1,-1];
+g1=conv2(f,edgex,'same');
+figure()
+imshow(g2,[-10,10])
+title('Sobel Mask edge detection x')
