@@ -103,6 +103,7 @@ imshow(int8(255*f)<Centers(2),[])
 imshow(int8(255*f)>Centers(3),[])
 edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));    
 imshow(f+edgemap,[0,1]);
+title ('5 centers')
 
 % Do the same procedure but now with 5 centers.
 % Is the segmentation better?
