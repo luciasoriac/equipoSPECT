@@ -45,7 +45,6 @@ title('result f >0.1')
 
 figure
 imhist(f)
-
 title('histogram')
 % Use a third threshold based on the histogram
 %% 
