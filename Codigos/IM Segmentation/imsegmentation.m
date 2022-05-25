@@ -95,7 +95,7 @@ title(' Proposed Hand X-ray Otsu threshold')
 
 %% Kmeans segmentation
  % se especifica el numero de clases
-[L,Centers] = imsegkmeans(int8(255*f),3);    % el numero despues de la coma es el numero de clases
+%[L,Centers] = imsegkmeans(int8(255*f),3);    % el numero despues de la coma es el numero de clases
 [L,Centers] = imsegkmeans(int8(255*f),5);    % el numero despues de la coma es el numero de clases
 B = labeloverlay(f,L);
 imshow(B)
