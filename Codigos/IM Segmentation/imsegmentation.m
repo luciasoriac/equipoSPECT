@@ -3,7 +3,6 @@
     % Mei Li Luisa Cham Perez A01139386
     % Ana Lucía Soria Cardona A00827565
     %
-    % Natalia Verónica Flores Del Río
     % Marcela Enriquez López A01570502
     % Natalia Verónica Flores Del Río A01570472
     %
