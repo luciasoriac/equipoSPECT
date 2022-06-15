@@ -4,12 +4,16 @@
 %NOTE: In order for this code to run properly, the Phased Array System
 %Toolbox was installed to Matlab 
 
+% Team 10 SPECT
 
+% Team members: 
+% Mei Li Cham, Ana Lucia Soria, Graciela Rincon, Natalia
+% Flores, Marcela Enriquez
 %% 1. Range Doppler response using matched filter
 load RangeDopplerExampleData;
 
 % Create a range-Doppler response object
-response = phased.RangeDopplerResponse('DopplerFFTLengthSource','Property', ...
+response = phased.RangeDopplerResponse('DopplerFFTLengthSource','Property', ...        
    'DopplerFFTLength',RangeDopplerEx_MF_NFFTDOP, ...
    'SampleRate',RangeDopplerEx_MF_Fs,'DopplerOutput','Speed', ...
    'OperatingFrequency',RangeDopplerEx_MF_Fc);
@@ -50,6 +54,9 @@ rng_est = rng_grid(rng_idx) % Distance of target                            % th
 
 %The target is approximately 2250 meters away and is moving fast enough to
 %cause a doppler shift of approximately -712.8906 Hz. 
+
+
+
 %%% FMCW Radar System
 
 %% 3. Range Doppler Response of FMCW Signal
