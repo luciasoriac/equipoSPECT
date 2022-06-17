@@ -4,6 +4,7 @@
     % Ana Lucía Soria Cardona A00827565
     % Marcela Enriquez López A01570502
     % Natalia Verónica Flores Del Río A01570472
+    % Graciela Rincon
 
     
 %%
@@ -28,20 +29,20 @@ title('Hand X-ray')
 %% Thresholding
 
 %stablish the limits that will be used 
-seg1 = f > 0.5;
+seg1 = f2 > 0.5;
 subplot(3,2,1)
 imshow(seg1,[])
-title('f > 0.5')
+title('f2 > 0.5')
 subplot(3,2,2)
-imshow(seg1.*f,[])
+imshow(seg1.*f2,[])
 title('result f> 0.5')
 
-seg1 = f < 0.75;
+seg1 = f2 < 0.75;
 subplot(3,2,3)
 imshow(seg1,[])
-title('f >0.75')
+title('f2 >0.75')
 subplot(3,2,4)
-imshow(seg1.*f,[])
+imshow(seg1.*f2,[])
 title('result f < 0.75')
 
 %second threshold to compare figures too
@@ -54,7 +55,7 @@ imshow(seg1.*2,[])
 title('result f2 >0.1')
 
 figure
-imhist(f)
+imhist(f2)
 title('histogram')
 % Use a third threshold based on the histogram
 %% 
@@ -62,7 +63,7 @@ title('histogram')
 
 %previous  threshold value 
 thr = graythresh(f) %define threshold 
-seg1 = f > thr; %
+seg1 = f> thr; %
 imshow(seg1,[])%black and white image contrast that is placed under the original image 
 dxp=[0,1;-1,0];
 dyp=[1,0;0,-1];  % gradiente en y
@@ -88,6 +89,8 @@ edgemap = abs(conv2(seg2,dxp,'same'))+abs(conv2(seg2,dyp,'same'));    %mapa de o
 imshow(f2+edgemap,[0,1]);     % ver las orillas de la imagen, otra forma de visualizar las imagenes
 title(' Proposed Hand X-ray Otsu threshold')
 
+%se ve que la segmentacion es buena pero tiene algunas fallas para el xray
+%de la mano
 
 %% Kmeans segmentation
  % se especifica el numero de clases
@@ -105,6 +108,17 @@ title ('5 centers')
 
 % Do the same procedure but now with 5 centers.
 % Is the segmentation better?   Sí
+
+[L,Centers] = imsegkmeans(int8(255*f2),5);    % el numero despues de la coma es el numero de clases
+B = labeloverlay(f2,L);
+imshow(B)
+title("Labeled Image")
+imshow(int8(255*f2)<Centers(1),[])
+imshow(int8(255*f2)<Centers(2),[])
+imshow(int8(255*f2)>Centers(3),[])
+edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));    
+imshow(f2+edgemap,[0,1]);
+title ('5 centers')
 %% Watershed segmentation
 
 edgeC = edge(f,'Canny');
